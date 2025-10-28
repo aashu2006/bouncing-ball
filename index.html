@@ -4,7 +4,87 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cool Bouncing Ball</title>
-   <link rel="stylesheet" href="/style.css" />
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+      }
+
+      .ballWrapper {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end; /* ball sits on "ground" */
+        padding-bottom: 50px;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0) scaleX(1) scaleY(1);
+        }
+        30% {
+          transform: translateY(-200px) scaleX(1.05) scaleY(0.95);
+        }
+        50% {
+          transform: translateY(0) scaleX(1.2) scaleY(0.8);
+        }
+        70% {
+          transform: translateY(-100px) scaleX(1.05) scaleY(0.95);
+        }
+      }
+
+      @keyframes shadowBounce {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+        30% {
+          transform: scale(0.5);
+          opacity: 0.2;
+        }
+        50% {
+          transform: scale(1.3);
+          opacity: 0.7;
+        }
+        70% {
+          transform: scale(0.7);
+          opacity: 0.3;
+        }
+      }
+
+      .ball {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, #ffff99, #ffcc00);
+        box-shadow: 0 0 40px rgba(255, 255, 100, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: #333;
+        animation: bounce 2s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+      }
+
+      .shadow {
+        position: absolute;
+        bottom: 0;
+        width: 120px;
+        height: 25px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        filter: blur(5px);
+        animation: shadowBounce 2s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+      }
+    </style>
+   
 
   </head>
   <body>
